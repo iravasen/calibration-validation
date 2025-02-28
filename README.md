@@ -12,7 +12,7 @@ Inside the **O2 environment run**:
 ./run-full-validation.sh <path-where-the-reference-raw-TF-are>
 ```
 
-This will run the ITS2 calibration workflow on all calibration scan data. It will take approximately 35 minutes. Once this is done, in the path where you run this script, you will get a new set of folders with names `unknown_<run_number>`. Inside each folder there are the ROOT TTtrees that will be used for the comparison with the reference TTtrees downloaded from EOS. 
+This will run the ITS2 calibration workflow on all calibration scan data. It will take approximately 35 minutes. Once this is done, in the path where you run this script, you will get a new set of folders with names `unknown_<run_number>`. Inside each folder there are the ROOT TTtrees that will be used for the comparison with the reference TTtrees downloaded from EOS. In addition, log files for each run are produced with the name `<run_number>.log`. These are the log files from the O2 processing of the data (raw TF). 
 
 ## Run validation macro
 The `validation_analysis.C` is a ROOT macro. Run it with:
