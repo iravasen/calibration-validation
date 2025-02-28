@@ -23,5 +23,5 @@ root[1]: validation_analysis("<path-where-the-reference-TTrees-are>")
 ```
 
 Note that the new TTrees folders are supposed to be in the same path where you run the `run-full-validation.sh` script. 
-This macro takes by default 1000 random entries from each tree and then compare the content of each branch. Once the analysis is completed (takes a few mins), a file `validation.pdf` is created with all the ratios between the data in the branches (new data vs reference data). If the ratio is 1 for all plots (red line in each plot is well visible), it means that your new code did not introduce any bug. 
+This macro takes by default 1000 random entries from each tree (for now only the tree `ITS-calib-tree` is considered) and then compare the content of each branch. Once the analysis is completed (takes a few mins), a file `validation.pdf` is created with all the ratios between the data in the branches (new data vs reference data). If the ratio is 1 for all plots (red line in each plot is well visible), it means that your new code did not introduce any bug. Ignore plots with x-axis title equal to `empty1`, `empty2`, etc. 
 
