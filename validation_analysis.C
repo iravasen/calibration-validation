@@ -15,7 +15,7 @@ std::map<std::string, int> runMap = {
         {"dig_scan", 560721},
         {"vresetd_1d", 560724},
         {"vresetd_2d", 560725},
-        {"ps_1d", 560726},
+        {"ps_1d", 561718},
         {"ps_2d", 560727},
         {"tot_full", 560728},
         {"vcasn", 560729},
