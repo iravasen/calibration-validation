@@ -18,7 +18,7 @@ find . ${BASE_PATH}/${RUN_NUMBER}_${SCAN_NAME}/ | grep "o2_raw" > ${RUN_NUMBER}.
 
 NINJ=50
 ADD_OPTIONS=""
-if [[ ${SCAN_NAME} == *"vresetd"* || ${SCAN_NAME} == "ps_2d" ]]; then
+if [[ ${SCAN_NAME} == "vresetd_2d" || ${SCAN_NAME} == "ps_2d" ]]; then
 	NINJ=10
 fi
 if [[ ${SCAN_NAME} == "tot_full" ]]; then
