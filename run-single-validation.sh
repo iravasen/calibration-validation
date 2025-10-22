@@ -10,7 +10,7 @@
 BASE_PATH=$3
 RUN_NUMBER=$1
 SCAN_NAME=$2
-find . ${BASE_PATH}/${RUN_NUMBER}_${SCAN_NAME}/ | grep "o2_raw" > ${RUN_NUMBER}.dat
+find ${BASE_PATH}/${RUN_NUMBER}_${SCAN_NAME}/ -type f -name 'o2_rawtf_run*_tf*_epn*.tf' | awk -F/ '{fname=$NF; print fname "\t" $0}' | sort -t_ -k5.4,5n -k4.3,4n | cut -f2- > ${RUN_NUMBER}.dat
 
 #####
 # Run O2 workflows based on the run type and save everything in log file run_number.log
