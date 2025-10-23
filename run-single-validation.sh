@@ -22,7 +22,7 @@ if [[ ${SCAN_NAME} == "vresetd_2d" || ${SCAN_NAME} == "ps_2d" ]]; then
 	NINJ=10
 fi
 if [[ ${SCAN_NAME} == "tot_full" ]]; then
-	ADD_OPTIONS="--calculate-slope --charge-a 30 --charge-b 60"
+	ADD_OPTIONS="--local --calculate-slope --charge-a 30 --charge-b 60"
 	NINJ=10
 fi
 
@@ -30,7 +30,7 @@ echo -e "Running workflow on run ${RUN_NUMBER} - ${SCAN_NAME}"
 
 o2-raw-tf-reader-workflow -b --input-data "${RUN_NUMBER}.dat" --onlyDet ITS --shm-segment-size 30000000000 | \
 o2-itsmft-stf-decoder-workflow -b --rof-lenght-error-freq -1 --always-parse-trigger --allow-empty-rofs --decoder-verbosity 0 --ignore-noise-map --nthreads 1 --pipeline its-stf-decoder:2 --enable-calib-data --digits --no-clusters --no-cluster-patterns | \
-o2-its-threshold-calib-workflow -b --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 0 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
-o2-its-threshold-calib-workflow -b --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 1 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
-o2-its-threshold-calib-workflow -b --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 2 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
+o2-its-threshold-calib-workflow -b --verbose --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 0 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
+o2-its-threshold-calib-workflow -b --verbose --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 1 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
+o2-its-threshold-calib-workflow -b --verbose --s-curve-col-step 256 --ninj ${NINJ} ${ADD_OPTIONS} --ccdb-mgr-url "http://alice-ccdb.cern.ch" --enable-single-pix-tag --chip-mod-selector 2 --chip-mod-base 3 --meta-output-dir "./" --nthreads 1 --fittype derivative | \
 o2-its-threshold-aggregator-workflow -b > ${RUN_NUMBER}.log
